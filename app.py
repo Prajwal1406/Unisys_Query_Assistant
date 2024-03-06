@@ -6,7 +6,7 @@ from transformers import (
     BitsAndBytesConfig,  # Add this import statement
     pipeline,
 )
-
+import accelerate
 model_name = "Prajwal3009/unisys_lama2"
 
 ################################################################################
