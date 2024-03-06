@@ -1,4 +1,12 @@
 import torch
+import streamlit as st
+from transformers import (
+    AutoModelForCausalLM,
+    AutoTokenizer,
+    BitsAndBytesConfig,  # Add this import statement
+    pipeline,
+)
+
 model_name = "Prajwal3009/unisys_lama2"
 
 ################################################################################
@@ -44,15 +52,6 @@ packing = False
 device_map = {"": 0}
 compute_dtype = getattr(torch, bnb_4bit_compute_dtype)
 
-
-
-import streamlit as st
-from transformers import (
-    AutoModelForCausalLM,
-    AutoTokenizer,
-    BitsAndBytesConfig,  # Add this import statement
-    pipeline,
-)
 
 bnb_config = BitsAndBytesConfig(
     load_in_4bit=use_4bit,
