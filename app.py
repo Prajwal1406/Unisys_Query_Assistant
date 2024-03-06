@@ -3,7 +3,7 @@ import streamlit as st
 from transformers import (
     AutoModelForCausalLM,
     AutoTokenizer,
-    BitsAndBytesConfig,  # Add this import statement
+    # BitsAndBytesConfig,  # Add this import statement
     pipeline,
 )
 
@@ -50,15 +50,15 @@ max_seq_length = None
 packing = False
 
 device_map = {"": 0}
-compute_dtype = getattr(torch, bnb_4bit_compute_dtype)
+# compute_dtype = getattr(torch, bnb_4bit_compute_dtype)
 
 
-bnb_config = BitsAndBytesConfig(
-    load_in_4bit=use_4bit,
-    bnb_4bit_quant_type=bnb_4bit_quant_type,
-    bnb_4bit_compute_dtype=compute_dtype,
-    bnb_4bit_use_double_quant=use_nested_quant,
-)
+# bnb_config = BitsAndBytesConfig(
+#     load_in_4bit=use_4bit,
+#     bnb_4bit_quant_type=bnb_4bit_quant_type,
+#     bnb_4bit_compute_dtype=compute_dtype,
+#     bnb_4bit_use_double_quant=use_nested_quant,
+# )
 
 model_name = "Prajwal3009/unisys_lama2"
 
@@ -66,7 +66,7 @@ model_name = "Prajwal3009/unisys_lama2"
 def get_model():
     model = AutoModelForCausalLM.from_pretrained(
     model_name,
-    quantization_config=bnb_config,
+    # quantization_config=bnb_config,
     device_map=device_map
     )
     tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
