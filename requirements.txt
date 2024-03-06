@@ -3,3 +3,4 @@ torch==2.2.1
 transformers==4.38.2
 accelerate==0.21.0
 bitsandbytes==0.40.2
+scipy
