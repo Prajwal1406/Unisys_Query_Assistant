@@ -67,7 +67,7 @@ def get_model():
     model = AutoModelForCausalLM.from_pretrained(
     model_name,
     quantization_config=bnb_config,
-    device=torch.device("cuda:0")
+    device_map=device
     )
     tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
     tokenizer.pad_token = tokenizer.eos_token
