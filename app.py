@@ -49,7 +49,7 @@ max_seq_length = None
 
 packing = False
 
-device_map = {"": 0}
+device = torch.device("cuda:0")
 compute_dtype = getattr(torch, bnb_4bit_compute_dtype)
 
 
@@ -67,7 +67,7 @@ def get_model():
     model = AutoModelForCausalLM.from_pretrained(
     model_name,
     quantization_config=bnb_config,
-    device_map=device_map
+    device=torch.device("cuda:0")
     )
     tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
     tokenizer.pad_token = tokenizer.eos_token
